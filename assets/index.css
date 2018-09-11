@@ -1,0 +1,38 @@
+.card-container {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 25% auto;
+}
+
+body {
+  background-color: lightslategrey;
+}
+
+
+.mod-name {
+  padding: 30px;
+}
+
+
+.user-card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 2%;
+  margin: 2%;
+}
+
+
+.sign-up-form {
+  background-color: lightblue;
+  padding: 3%;
+  display: none;
+}
+
+.sign-up-form form {
+  margin: 2%;
+}
+
+#close-button {
+  float: right;
+}
