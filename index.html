@@ -4,16 +4,19 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/index.css">
+    <link rel="stylesheet" href="assets/bubbles.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap-slider.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="assets/loading-bar.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/pace-theme-center-circle.css"/>
 
 
     <title>SkillShare</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">SkillShare @ Flatiron London</a>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" id="page-header">Skill <i class="fas fa-exchange-alt"></i> Share @ Flatiron London</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,7 +46,7 @@
       </div>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search for help..." aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
       </form>
     </nav>
     <div class="sign-up-form">
@@ -65,15 +68,19 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <label for="inputSlackUsername" class="col-sm-2 col-form-label">Slack Handle</label>
                 <div class="col-sm-8">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                  <input type="slack_username" class="form-control" id="slack_username" placeholder="Your Slack Username">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputModule" class="col-sm-2 col-form-label">Module</label>
                 <div class="col-sm-8">
-                  <input type="module" class="form-control" id="inputModule" placeholder="For example: 071618">
+                  <select class="form-control" id="inputModule">
+                        <option>060418</option>
+                        <option>071618</option>
+                        <option>082818</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -83,13 +90,13 @@
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputARRating" class="col-form-label">ActiveRecord</label><br>
-                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='arSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputReactRating" class="col-form-label">React</label><br>
-                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='reactSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
                   </div>
                 </div>
               </div>
@@ -97,13 +104,13 @@
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputRailsRating" class="col-form-label">Rails</label><br>
-                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='railsSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputSinatraRating" class="col-form-label">Sinatra</label><br>
-                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='sinatraSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
                   </div>
                 </div>
               </div>
@@ -130,26 +137,31 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" id="create-new-user-submit">Submit</button>
           </div>
         </form>
         <a id="close-button" href=#><i class="fas fa-window-close"></i>  Want to register later? Click to exit the form.</a>
       </div>
     </div>
-    <h3 class="mod-name">Peaky Binders</h3>
-    <div class="card-container" id="06">
+    <h3 class="mod-name">Module 5 (060418)</h3>
+    <div class="card-container" id="060418">
     </div>
-    <h3 class="mod-name">Mod 3</h3>
+    <h3 class="mod-name">Module 3 (071618)</h3>
     <div class="card-container" id="071618">
     </div>
-    <h3 class="mod-name">Mod 1</h3>
-    <div class="card-container">
+    <h3 class="mod-name">Module 1 (082818)</h3>
+    <div class="card-container" id="082818">
     </div>
+    <script src="assets/pace.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="src/index.js"></script>
+    <script type="text/javascript" src="assets/loading-bar.js"></script>
+    <script src="src/SlackAPI.js"></script>
     <script src="src/User.js"></script>
+    <script src="src/UserList.js"></script>
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script>
     <script src="assets/bootstrap-slider.min.js"></script>
 
   </body>

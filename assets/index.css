@@ -6,7 +6,21 @@
 }
 
 body {
-  background-color: lightslategrey;
+  background-color: ghostwhite;
+  font-family: 'Nunito', sans-serif;
+}
+
+.navbar {
+  background-color: skyblue;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
+}
+
+.navbar-light .navbar-brand {
+  color: white;
+  font-size: 1.5em;
 }
 
 
@@ -18,8 +32,9 @@ body {
 .user-card {
   background-color: white;
   border-radius: 20px;
-  padding: 2%;
+  padding: 5%;
   margin: 2%;
+  text-align: center;
 }
 
 
@@ -35,4 +50,9 @@ body {
 
 #close-button {
   float: right;
+}
+
+.profile-pic {
+  width: 80%;
+  padding: 3%;
 }
