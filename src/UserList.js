@@ -18,19 +18,17 @@ class UserList {
   appendUser(user) {
     const newUserInstance = new User(user)
     const foundSlackUser = this.londonSlackUsers.find(user => user.real_name.includes(newUserInstance.name))
-    newUserInstance.photo = foundSlackUser.profile.image_original
+    if (!!foundSlackUser.profile.image_original === false) {
+      newUserInstance.photo = 'http://tapatiarestaurant.com/wp-content/uploads/2015/10/blank__240x240.gif'
+    } else {
+      newUserInstance.photo = foundSlackUser.profile.image_original
+    }
     newUserInstance.slackTeamId = foundSlackUser.team_id
     newUserInstance.slackId = foundSlackUser.id
+    newUserInstance.getPresence()
     const newCard = document.createElement('div')
     newCard.className = "user-card"
-    newCard.innerHTML = `<h3>${newUserInstance.name}</h3><img class="profile-pic" src="${newUserInstance.photo}" />
-    <br>
-    <a href="mailto:${newUserInstance.email}">Email / </a>
-    <a href="slack://user?team=${newUserInstance.slackTeamId}&id=${newUserInstance.slackId}">Slack ${newUserInstance.name}</a>
-    <ul id="skills-list">
-    <li>ActiveRecord: ${newUserInstance.ARrating}%</li>
-    </ul>`
-    console.log(newUserInstance)
+    newCard.innerHTML = newUserInstance.render()
     document.getElementById(newUserInstance.module).appendChild(newCard)
   }
 

@@ -37,6 +37,10 @@ body {
   text-align: center;
 }
 
+ul {
+  list-style: none;
+  padding-left: 0;
+}
 
 .sign-up-form {
   background-color: lightblue;
