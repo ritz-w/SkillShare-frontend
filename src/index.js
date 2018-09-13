@@ -54,13 +54,32 @@ function createUser(){
 
 }
 
+function searchUsers() {
+    const nameFieldValue = document.getElementById('search-field').value
+    console.log(userList.users)
+    console.log(userList.filterUsersByName(nameFieldValue))
+    userList.filterUsersByName(nameFieldValue)
+    userList.appendUsers(userList.filteredUsers)
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   createSliders()
   document.getElementById('sign-up-button').addEventListener('click', toggleForm)
   document.getElementById('close-button').addEventListener('click', toggleForm)
   document.getElementById('create-new-user-submit').addEventListener('click', createUser)
+  document.getElementById('submit-search').addEventListener('click', searchUsers)
   let userList
   fetch(BackendAPI.USERS_URL).then(res => res.json())
-    .then(users => SlackAPI.getMembers().then(slackUsers => userList = new UserList(users, slackUsers)))
-    .then(() => userList.appendUsers())
+    .then(users => SlackAPI.getMembers().then(slackUsers => {
+      userList = new UserList(users, slackUsers)
+      window.userList = userList
+    }))
+    .then(() => {userList.appendUsers(userList.users)
+      document.getElementById('showAll').addEventListener('click', () => {
+        userList.appendUsers(userList.users)
+      })
+    })
+    .then(() => {
+      BackendAPI.createSkillOptions(userList)
+    })
 });

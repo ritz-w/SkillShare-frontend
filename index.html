@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/index.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="assets/bootstrap-slider.min.css">
@@ -19,31 +19,26 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" id="sign-up-button" href="#">Share your Skills <span class="sr-only">(current)</span></a>
+          </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Login/Sign Up
+              Find Help by Skill
             </a>
-            <div class="dropdown-menu">
-              <form class="px-4 py-3">
+            <div class="dropdown-menu" id="skills-list">
                 <div class="form-group">
-                  <label for="exampleDropdownFormEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                  <a class="dropdown-item" id="showAll">Show All</a>
                 </div>
-                <div class="form-group">
-                  <label for="exampleDropdownFormPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
-              </form>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" id="sign-up-button">Share your skills? Sign up</a>
             </div>
           </li>
         </ul>
       </div>
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search for help..." aria-label="Search">
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="search" id= "search-field" placeholder="Search by name..." aria-label="Search">
+        <button class="btn btn-outline-dark my-2 my-sm-0" id="submit-search" type="submit">Search</button>
       </form>
     </nav>
     <div class="sign-up-form">
@@ -140,13 +135,13 @@
         <a id="close-button" href=#><i class="fas fa-window-close"></i>  Want to register later? Click to exit the form.</a>
       </div>
     </div>
-    <h3 class="mod-name">Module 5 (060418)</h3>
+    <h3 class="mod-name" style="display:none">Module 5 (060418)</h3>
     <div class="card-container" id="060418">
     </div>
-    <h3 class="mod-name">Module 3 (071618)</h3>
+    <h3 class="mod-name" style="display:none">Module 3 (071618)</h3>
     <div class="card-container" id="071618">
     </div>
-    <h3 class="mod-name">Module 1 (082818)</h3>
+    <h3 class="mod-name" style="display:none">Module 1 (082818)</h3>
     <div class="card-container" id="082818">
     </div>
     <script src="assets/pace.js"></script>

@@ -1,3 +1,5 @@
+const allUsers = []
+
 class User {
   constructor(userData) {
     this.id = userData.id
@@ -7,6 +9,7 @@ class User {
     this.slack_username = userData.slack_username
     this.skills = userData.user_skills
     this.presence = 'Loading...'
+    allUsers.push(this)
   }
 
   render() {

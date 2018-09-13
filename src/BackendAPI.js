@@ -1,7 +1,7 @@
 class BackendAPI {
 
   static createRating(user_id, skill_id, rating){
-      return fetch(BackendAPI.SKILLS_URL,{
+      return fetch(BackendAPI.USER_SKILLS_URL,{
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -56,8 +56,38 @@ class BackendAPI {
     }).then(()=> {location.reload()})
 
   }
+
+  // static findSkills(skillId) {
+  //   fetch(`${BackendAPI.SKILLS_URL}/${skillId}`)
+  //   .then(res => res.json())
+  //   .then(skillInfo => {
+  //     skillInfo.user_skills.filter(skill => skill.rating > 75)
+  //   })
+  // }
+
+  static createSkillOptions(userList) {
+    fetch(BackendAPI.SKILLS_URL)
+    	.then(resp => resp.json())
+    	.then(skills => {
+        skills.forEach(skill => {
+            const divElement = document.createElement('div')
+            divElement.innerHTML = `
+            <div class="form-group">
+              <a class="dropdown-item">${skill.name}</a>
+            </div>
+            `
+            divElement.addEventListener('click', () => {
+              userList.filterUsersBySkill(skill.name)
+              userList.appendUsers(userList.filteredUsers)
+            })
+            document.getElementById('skills-list').append(divElement)
+
+        })
+    	}
+    )}
 }
 
 BackendAPI.BASE_URL = "http://localhost:3000"
 BackendAPI.USERS_URL = BackendAPI.BASE_URL + "/users"
-BackendAPI.SKILLS_URL = BackendAPI.BASE_URL + "/user_skills"
+BackendAPI.USER_SKILLS_URL = BackendAPI.BASE_URL + "/user_skills"
+BackendAPI.SKILLS_URL = BackendAPI.BASE_URL + "/skills"

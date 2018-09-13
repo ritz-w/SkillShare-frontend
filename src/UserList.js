@@ -1,19 +1,43 @@
 class UserList {
   constructor(users, slackUsers) {
     this.users = users
+    this.filteredUsers = []
     this.londonSlackUsers = this.getLondonSlackUsers(slackUsers)
     this.mod5 = document.getElementById('060418')
     this.mod3 = document.getElementById('071618')
     this.mod1 = document.getElementById('082818')
   }
 
+  showHeaders() {
+    if (this.mod5.innerHTML === ""){
+      this.mod5.previousElementSibling.style.display = "none"
+    } else {
+      this.mod5.previousElementSibling.style.display = "block"
+    }
+    if (this.mod3.innerHTML === ""){
+      this.mod3.previousElementSibling.style.display = "none"
+    } else {
+      this.mod3.previousElementSibling.style.display = "block"
+    }
+    if (this.mod1.innerHTML === ""){
+      this.mod1.previousElementSibling.style.display = "none"
+    } else {
+      this.mod1.previousElementSibling.style.display = "block"
+    }
+  }
+
   getLondonSlackUsers(slackUsers) {
     return slackUsers.filter(member => member.tz_label === "British Summer Time")
   }
 
-  appendUsers() {
-    this.users.forEach( user => this.appendUser(user))
+  appendUsers(users) {
+    this.mod5.innerHTML = ""
+    this.mod3.innerHTML = ""
+    this.mod1.innerHTML = ""
+    users.forEach( user => this.appendUser(user))
+    this.showHeaders()
   }
+
 
   appendUser(user) {
     const newUserInstance = new User(user)
@@ -31,6 +55,22 @@ class UserList {
     newCard.innerHTML = newUserInstance.render()
     document.getElementById(newUserInstance.module).appendChild(newCard)
   }
+
+  filterUsersBySkill(skillName) {
+    const filteredSkillUsers = this.users.filter(user => {
+      const foundSkill = user.user_skills.find(skill => skill.skill.name === skillName)
+      return foundSkill && foundSkill.rating > 75 ? true : false
+    })
+    this.filteredUsers = filteredSkillUsers
+    return filteredSkillUsers
+  }
+
+  filterUsersByName(name) {
+    const filteredNameUsers = this.users.filter(user => user.name.toLowerCase().includes(name.toLowerCase()))
+    this.filteredUsers = filteredNameUsers
+    return filteredNameUsers
+  }
+
 
 
 }
