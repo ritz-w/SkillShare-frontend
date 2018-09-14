@@ -60,9 +60,9 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="inputSlackUsername" class="col-sm-2 col-form-label">Slack Handle</label>
+                <label for="inputSlackUsername" class="col-sm-2 col-form-label">Personal Message</label>
                 <div class="col-sm-8">
-                  <input type="slack_username" class="form-control" id="slack_username" placeholder="Your Slack Username">
+                  <input type="tagline" class="form-control" id="tagline" placeholder="Hi, I'd be happy to help you!">
                 </div>
               </div>
               <div class="form-group row">
@@ -82,13 +82,13 @@
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputARRating" class="col-form-label">ActiveRecord</label><br>
-                    <input class="form-slider" data-slider-id='arSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='arSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputReactRating" class="col-form-label">React</label><br>
-                    <input class="form-slider" data-slider-id='reactSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='reactSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
@@ -96,13 +96,13 @@
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputRailsRating" class="col-form-label">Rails</label><br>
-                    <input class="form-slider" data-slider-id='railsSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='railsSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputSinatraRating" class="col-form-label">Sinatra</label><br>
-                    <input class="form-slider" data-slider-id='sinatraSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='sinatraSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
@@ -110,13 +110,13 @@
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputJSRating" class="col-form-label">JavaScript</label><br>
-                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputSQLRating" class="col-form-label">SQLite</label><br>
-                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
@@ -124,7 +124,7 @@
                 <div class="form-group">
                   <div class="col-sm-6">
                   <label for="inputRBRating" class="col-form-label">Ruby</label><br>
-                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="14"/>
+                    <input class="form-slider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0"/>
                   </div>
                 </div>
               </div>
@@ -135,22 +135,27 @@
         <a id="close-button" href=#><i class="fas fa-window-close"></i>  Want to register later? Click to exit the form.</a>
       </div>
     </div>
-    <h3 class="mod-name" style="display:none">Module 5 (060418)</h3>
-    <div class="card-container" id="060418">
-    </div>
-    <h3 class="mod-name" style="display:none">Module 3 (071618)</h3>
-    <div class="card-container" id="071618">
-    </div>
-    <h3 class="mod-name" style="display:none">Module 1 (082818)</h3>
-    <div class="card-container" id="082818">
+    <canvas id="canvas">Canvas is not supported in your browser.</canvas>
+    <div class="container" id="cards-container">
+      <h3 class="mod-name" style="display:none">Module 5 (060418)</h3>
+      <div class="card-container" id="060418">
+      </div>
+      <h3 class="mod-name" style="display:none">Module 3 (071618)</h3>
+      <div class="card-container" id="071618">
+      </div>
+      <h3 class="mod-name" style="display:none">Module 1 (082818)</h3>
+      <div class="card-container" id="082818">
+      </div>
     </div>
     <script src="assets/pace.js"></script>
+
     <script src="src/BackendAPI.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="src/index.js"></script>
     <script src="src/SlackAPI.js"></script>
+    <script src="assets/fireworks.js"></script>
     <script src="src/User.js"></script>
     <script src="src/UserList.js"></script>
     <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.0/pace.min.js"></script>

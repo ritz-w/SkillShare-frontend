@@ -13,7 +13,7 @@ function createSliders() {
 
 const nameInput = document.getElementById('inputName')
 const emailInput = document.getElementById('inputEmail')
-const slackUsername = document.getElementById('slack_username')
+const personalTag = document.getElementById('tagline')
 const modName = document.getElementById('inputModule')
 
 function toggleForm() {
@@ -28,7 +28,7 @@ function toggleForm() {
 function createUser(){
   const name = nameInput.value
   const email = emailInput.value
-  const slack_username = slackUsername.value
+  const tagline = personalTag.value
   const mod_name = modName.value
 
   fetch('http://localhost:3000/users',{
@@ -38,7 +38,7 @@ function createUser(){
     name,
     email,
     mod_name,
-    slack_username
+    tagline
     })
   }).then(resp=>resp.json())
   .then(user => {
@@ -62,9 +62,22 @@ function searchUsers() {
     userList.appendUsers(userList.filteredUsers)
 }
 
+function toggleFireworks() {
+  if (document.getElementById('canvas').style.display === "none" || document.getElementById('canvas').style.display === "") {
+    document.getElementById('canvas').style.display = "block"
+    document.getElementById('cards-container').style.display = "none"
+    console.log(document.getElementById('canvas').style.display)
+  } else if (document.getElementById('canvas').style.display === "block") {
+    document.getElementById('canvas').style.display = "none"
+    document.getElementById('cards-container').style.display = "block"
+    console.log(document.getElementById('canvas').style.display)
+  }
+}
 document.addEventListener('DOMContentLoaded', () => {
   createSliders()
   document.getElementById('sign-up-button').addEventListener('click', toggleForm)
+  document.getElementById('page-header').addEventListener('mouseover', toggleFireworks)
+  document.getElementById('page-header').addEventListener('mouseout', toggleFireworks)
   document.getElementById('close-button').addEventListener('click', toggleForm)
   document.getElementById('create-new-user-submit').addEventListener('click', createUser)
   document.getElementById('submit-search').addEventListener('click', searchUsers)

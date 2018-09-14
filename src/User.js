@@ -6,7 +6,7 @@ class User {
     this.name = userData.name
     this.module = userData.mod_name
     this.email = userData.email
-    this.slack_username = userData.slack_username
+    this.tagline = userData.tagline
     this.skills = userData.user_skills
     this.presence = 'Loading...'
     allUsers.push(this)
@@ -18,6 +18,7 @@ class User {
       <p id="active-${this.id}">${this.presence}</p>
       <img class="profile-pic" src="${this.photo}" />
       <br>
+      <p><i>${this.tagline}</i></p>
       <ul id="skills-list">
         ${this.renderSkills()}
       </ul>

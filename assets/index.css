@@ -60,3 +60,10 @@ ul {
   width: 80%;
   padding: 3%;
 }
+
+canvas {
+	cursor: crosshair;
+	display: none;
+  background-color: #000;
+	margin: 0;
+}
